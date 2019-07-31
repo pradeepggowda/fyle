@@ -1,7 +1,6 @@
 package com.fyle.interview.repositories;
 
 import com.fyle.interview.model.BankBranchesDto;
-import com.fyle.interview.model.BankDto;
 import org.skife.jdbi.v2.StatementContext;
 import org.skife.jdbi.v2.sqlobject.Bind;
 import org.skife.jdbi.v2.sqlobject.SqlQuery;
@@ -16,22 +15,11 @@ import java.util.List;
 public interface IBankRepository {
     @SqlQuery("SELECT * FROM bank_branches WHERE bank_name=:bank_name AND city=:city limit :limit offset :offset")
     List<BankBranchesDto> list(@Bind("bank_name") String bankName, @Bind("city") String city,
-                       @Bind("limit") int limit, @Bind("offset") int offset);
+                               @Bind("limit") int limit, @Bind("offset") int offset);
 
     @SqlQuery("SELECT * FROM bank_branches WHERE ifsc=:ifsc")
     BankBranchesDto listBankDetails(@Bind("ifsc") String bankName);
 
-
-    /*class BankMapper implements ResultSetMapper<BankDto> {
-        @Override
-        public BankDto map(int i, ResultSet r, StatementContext statementContext) throws SQLException {
-            BankDto bank = new BankDto();
-            bank.setId(r.getLong("id"));
-            bank.setName(r.getString("name"));
-            return bank;
-        }
-    }
-*/
     class BankBranchesMapper implements ResultSetMapper<BankBranchesDto> {
         @Override
         public BankBranchesDto map(int i, ResultSet r, StatementContext statementContext) throws SQLException {

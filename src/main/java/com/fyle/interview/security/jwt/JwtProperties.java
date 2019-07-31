@@ -9,7 +9,7 @@ public class JwtProperties {
 
     private String secretKey = "secret";
 
-    //validity in milliseconds
+    //validity in milliseconds for 5days
     private long validityInMs = 432000000; // 5days
 
     public String getSecretKey() {
