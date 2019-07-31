@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 @Repository
@@ -18,17 +19,19 @@ public class BankRepository {
     @Autowired
     private DataSource dataSource;
 
-    public List<BankBranchesDto> list(String bankName, String city, int limit, int offset) {
-        Connection conn = DataSourceUtils.getConnection(dataSource);
-        Handle handle = DBI.open(conn);
-        IBankRepository repository = handle.attach(IBankRepository.class);
-        return repository.list(bankName, city, limit, offset);
+    public List<BankBranchesDto> list(String bankName, String city, int limit, int offset) throws SQLException {
+        try (Connection conn = DataSourceUtils.getConnection(dataSource);
+             Handle handle = DBI.open(conn)) {
+            IBankRepository repository = handle.attach(IBankRepository.class);
+            return repository.list(bankName, city, limit, offset);
+        }
     }
 
-    public BankBranchesDto listBankDetails(String ifsc) {
-        Connection conn = DataSourceUtils.getConnection(dataSource);
-        Handle handle = DBI.open(conn);
-        IBankRepository repository = handle.attach(IBankRepository.class);
-        return repository.listBankDetails(ifsc);
+    public BankBranchesDto listBankDetails(String ifsc) throws SQLException {
+        try (Connection conn = DataSourceUtils.getConnection(dataSource);
+             Handle handle = DBI.open(conn)) {
+            IBankRepository repository = handle.attach(IBankRepository.class);
+            return repository.listBankDetails(ifsc);
+        }
     }
 }
