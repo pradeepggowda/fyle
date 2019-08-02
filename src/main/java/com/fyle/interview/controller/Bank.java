@@ -24,7 +24,7 @@ public class Bank {
         return "Hello there, please use the curl scripts with JWT token to try out the APIs";
     }
 
-    @RequestMapping("/api/bank/{name}/{city}")
+    @RequestMapping("/api/bank/{name}/branches/{city}")
     public List<BankDetailsModel> bank(@PathVariable String name,
                                        @PathVariable String city,
                                        @RequestParam int limit,
