@@ -1,4 +1,4 @@
-package com.fyle.interview.controller.viewmode;
+package com.fyle.interview.controller.viewmode.response;
 
 import com.fyle.interview.model.BankBranchesDto;
 

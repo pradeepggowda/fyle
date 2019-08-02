@@ -1,7 +1,11 @@
 package com.fyle.interview.security.jwt;
 
+import com.fyle.interview.service.UserService;
 import io.jsonwebtoken.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -13,7 +17,9 @@ import java.util.Date;
 public class JwtTokenProvider {
 
     @Autowired
-    JwtProperties jwtProperties;
+    private JwtProperties jwtProperties;
+    @Autowired
+    private UserService user;
 
     private String secretKey;
 
@@ -22,9 +28,9 @@ public class JwtTokenProvider {
         secretKey = Base64.getEncoder().encodeToString(jwtProperties.getSecretKey().getBytes());
     }
 
-    public String createToken() {
+    public String createToken(String username) {
 
-        Claims claims = Jwts.claims().setSubject("fyleTokenGen");
+        Claims claims = Jwts.claims().setSubject(username);
 
         Date now = new Date();
         Date validity = new Date(now.getTime() + jwtProperties.getValidityInMs());
@@ -37,6 +43,10 @@ public class JwtTokenProvider {
                 .compact();
     }
 
+    public Authentication getAuthentication(String token) throws Exception {
+        UserDetails userDetails = user.loadUserByUsername(getUsername(token));
+        return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
+    }
 
     public String getUsername(String token) {
         return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getSubject();
@@ -56,7 +66,6 @@ public class JwtTokenProvider {
 
             if (claims.getBody().getExpiration().before(new Date())) {
                 throw new InvalidJwtAuthenticationException("Expired or invalid JWT token");
-
             }
 
             return true;

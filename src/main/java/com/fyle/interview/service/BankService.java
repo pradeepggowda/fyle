@@ -1,5 +1,6 @@
 package com.fyle.interview.service;
 
+import com.fyle.interview.controller.FyleServiceException;
 import com.fyle.interview.model.BankBranchesDto;
 import com.fyle.interview.repositories.BankRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ public class BankService {
 
         } catch (Exception e) {
             String message = "Failed to list branch details for bank " + bankName + " in " + city;
-            throw new Exception(message, e);
+            throw new FyleServiceException(message, e);
         }
     }
 
@@ -26,7 +27,7 @@ public class BankService {
         try {
             return bankRepository.listBankDetails(ifsc);
         } catch (Exception e) {
-            throw new Exception("Failed to display bank details for IFSC-" + ifsc, e);
+            throw new FyleServiceException("Failed to display bank details for IFSC-" + ifsc, e);
         }
     }
 }

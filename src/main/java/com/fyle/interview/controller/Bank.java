@@ -1,6 +1,6 @@
 package com.fyle.interview.controller;
 
-import com.fyle.interview.controller.viewmode.BankDetailsModel;
+import com.fyle.interview.controller.viewmode.response.BankDetailsModel;
 import com.fyle.interview.model.BankBranchesDto;
 import com.fyle.interview.service.BankService;
 import org.springframework.beans.factory.annotation.Autowired;
