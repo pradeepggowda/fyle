@@ -20,6 +20,7 @@ public class Bank {
 
     @RequestMapping("/")
     public String hello() {
+
         return "Hello there, please use the curl scripts with JWT token to try out the APIs";
     }
 

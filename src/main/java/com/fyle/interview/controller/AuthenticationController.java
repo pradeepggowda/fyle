@@ -53,7 +53,7 @@ public class AuthenticationController {
     }
 
 
-    @PostMapping("/singup")
+    @PostMapping("/signup")
     public ResponseEntity singup(@RequestBody UserSignupModel data) throws Exception {
 
         validateUserArgs(data);
