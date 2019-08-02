@@ -34,7 +34,7 @@ public class Bank {
                 .map(BankDetailsModel::new).collect(toList());
     }
 
-    @RequestMapping("/api/bank/{ifsc}")
+    @RequestMapping("/api/bank/branch/{ifsc}")
     public BankBranchesDto bankDetails(@PathVariable String ifsc) throws Exception {
         return bankService.listBankDetails(ifsc);
     }
