@@ -29,13 +29,13 @@ public class AuthenticationController {
 
 
     @Autowired
-    AuthenticationManager authenticationManager;
+    private AuthenticationManager authenticationManager;
 
     @Autowired
-    JwtTokenProvider jwtTokenProvider;
+    private JwtTokenProvider jwtTokenProvider;
 
     @Autowired
-    UserService users;
+    private UserService users;
 
 
     @PostMapping("/signin")
@@ -56,8 +56,9 @@ public class AuthenticationController {
     @PostMapping("/singup")
     public ResponseEntity singup(@RequestBody UserSignupModel data) throws Exception {
 
-        String username = data.getUsername();
+        validateUserArgs(data);
 
+        String username = data.getUsername();
         UserDto userDto = new UserDto();
         userDto.setEmail_id(data.getEmailId());
         userDto.setPassword(data.getPassword());
@@ -75,5 +76,21 @@ public class AuthenticationController {
         model.put("user", userViewModel);
         model.put("token", token);
         return ok(model);
+    }
+
+    private void validateUserArgs(UserSignupModel data) throws FyleArgumentValidationException {
+        if (data.getUsername() == null || data.getUsername().isEmpty()) {
+            throw new FyleArgumentValidationException("Username cannot be empty");
+        }
+
+        if (data.getPassword() == null || data.getPassword().isEmpty()) {
+            throw new FyleArgumentValidationException("password cannot be empty");
+        }
+
+
+        if (!data.getPassword().equals(data.getConfirmPassword())) {
+            throw new FyleArgumentValidationException("Passwords do not match");
+        }
+
     }
 }

@@ -3,7 +3,16 @@ package com.fyle.interview.controller.viewmode.request;
 public class UserSignupModel {
     private String username;
     private String password;
+    private String confirmPassword;
     private String emailId;
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
 
     public String getUsername() {
         return username;

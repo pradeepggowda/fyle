@@ -39,12 +39,4 @@ public class UserService {
         }
     }
 
-    public UserDetails loadUserByUsername(String username) throws Exception {
-        UserDto user = userRepository.findByName(username);
-        if (user == null) throw new UsernameNotFoundException(username);
-        return new User(user.getUser_name(), user.getPassword(), new HashSet<>());
-
-    }
-
-
 }

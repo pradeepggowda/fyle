@@ -1,6 +1,6 @@
 package com.fyle.interview.security.jwt;
 
-import com.fyle.interview.service.UserService;
+import com.fyle.interview.security.CustomUserDetailsService;
 import io.jsonwebtoken.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -19,7 +19,7 @@ public class JwtTokenProvider {
     @Autowired
     private JwtProperties jwtProperties;
     @Autowired
-    private UserService user;
+    private CustomUserDetailsService user;
 
     private String secretKey;
 
