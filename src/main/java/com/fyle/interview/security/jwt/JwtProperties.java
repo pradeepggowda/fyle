@@ -1,5 +1,6 @@
 package com.fyle.interview.security.jwt;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
@@ -7,10 +8,12 @@ import org.springframework.context.annotation.Configuration;
 @ConfigurationProperties(prefix = "jwt")
 public class JwtProperties {
 
-    private String secretKey = "secret";
+    @Value("${jwt.secretKey}")
+    private String secretKey;
 
-    //validity in milliseconds for 5days
-    private long validityInMs = 432000000; // 5days
+    //validity in millisecond-s for 5days
+    @Value("${jwt.token.validity:432000000}")
+    private long validityInMs;
 
     public String getSecretKey() {
         return secretKey;
