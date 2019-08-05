@@ -12,7 +12,7 @@ public class JwtProperties {
     private String secretKey;
 
     //validity in millisecond-s for 5days
-    @Value("${token.validity:432000000}")
+    @Value("${token.validity}")
     private long validityInMs;
 
     public String getSecretKey() {
