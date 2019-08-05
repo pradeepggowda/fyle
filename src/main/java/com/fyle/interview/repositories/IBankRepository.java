@@ -4,6 +4,7 @@ import com.fyle.interview.model.BankBranchesDto;
 import org.skife.jdbi.v2.StatementContext;
 import org.skife.jdbi.v2.sqlobject.Bind;
 import org.skife.jdbi.v2.sqlobject.SqlQuery;
+import org.skife.jdbi.v2.sqlobject.customizers.Define;
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 import org.skife.jdbi.v2.tweak.ResultSetMapper;
 
@@ -13,7 +14,10 @@ import java.util.List;
 
 @RegisterMapper(IBankRepository.BankBranchesMapper.class)
 public interface IBankRepository {
-    @SqlQuery("SELECT * FROM bank_branches WHERE bank_name=:bank_name AND city=:city limit :limit offset :offset")
+    @SqlQuery("SELECT * FROM bank_branches WHERE " +
+            "(CAST(:bank_name AS TEXT) IS null OR bank_name=:bank_name) " +
+            "AND (CAST(:city AS TEXT) IS null OR city=:city) " +
+            "limit :limit offset :offset")
     List<BankBranchesDto> list(@Bind("bank_name") String bankName, @Bind("city") String city,
                                @Bind("limit") int limit, @Bind("offset") int offset);
 

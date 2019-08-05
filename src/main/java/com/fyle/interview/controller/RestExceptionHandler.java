@@ -14,7 +14,7 @@ import static org.springframework.http.ResponseEntity.status;
 @RestControllerAdvice
 public class RestExceptionHandler {
 
-    @ExceptionHandler(value = {FyleServiceException.class})
+    @ExceptionHandler(value = {Exception.class})
     public ResponseEntity genericExceptionHandler(Exception ex, WebRequest request) {
         return status(500).body(ex.getMessage());
     }

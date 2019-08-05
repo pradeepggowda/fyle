@@ -24,15 +24,15 @@ curl -X POST \
 }'
 
 curl -X GET \
-  'https://serene-forest-12202.herokuapp.com/api/bank/ABHYUDAYA%20COOPERATIVE%20BANK%20LIMITED/branches/MUMBAI?limit=5&offset=6' \
-  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTU2NTAyMjE1NCwiZXhwIjoxNTY1MDIyMTU1fQ.X7fASB0nEb3TtCWQLdEeKOBapbj2AkTsms3s8OqcAyApra' \
+  'https://serene-forest-12202.herokuapp.com/api/bank/branches?name=ABHYUDAYA%20COOPERATIVE%20BANK%20LIMITED&city=MUMBAI?limit=5&offset=6' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTU2NTAyMzU3MiwiZXhwIjoxNTY1NDU1NTcyfQ.DEdT5MU0Qi7e9Ghc1fqmm5twKAgO4N-nBPbBjtDbqjI' \
   -H 'Postman-Token: 15c5a343-b725-4fb9-bfa4-3e74fce0dbee' \
   -H 'cache-control: no-cache'
 
 
 curl -X GET \
   https://serene-forest-12202.herokuapp.com/api/bank/branch/ABHY0065007 \
-  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTU2NDc2ODQ1MSwiZXhwIjoxNTY1MjAwNDUxfQ.Zn3zjZ9v6k2Vqat_QgWwK3T_nfTzPs_vVcSJIz6eS1o' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTU2NTAyMzU3MiwiZXhwIjoxNTY1NDU1NTcyfQ.DEdT5MU0Qi7e9Ghc1fqmm5twKAgO4N-nBPbBjtDbqjI' \
   -H 'Content-Type: application/json' \
   -H 'Postman-Token: 5e701b8a-9247-45db-9c29-0fe84ad258b4' \
   -H 'cache-control: no-cache'
