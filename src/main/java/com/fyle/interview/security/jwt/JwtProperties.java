@@ -8,11 +8,11 @@ import org.springframework.context.annotation.Configuration;
 @ConfigurationProperties(prefix = "jwt")
 public class JwtProperties {
 
-    @Value("${secretKey}")
+    @Value("${jwt.secretKey}")
     private String secretKey;
 
     //validity in millisecond-s for 5days
-    @Value("${token.validity}")
+    @Value("${jwt.token.validity}")
     private long validityInMs;
 
     public String getSecretKey() {
