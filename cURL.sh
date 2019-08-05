@@ -25,7 +25,7 @@ curl -X POST \
 
 curl -X GET \
   'https://serene-forest-12202.herokuapp.com/api/bank/ABHYUDAYA%20COOPERATIVE%20BANK%20LIMITED/branches/MUMBAI?limit=5&offset=6' \
-  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTU2NDc2ODQ1MSwiZXhwIjoxNTY1MjAwNDUxfQ.Zn3zjZ9v6k2Vqat_QgWwK3T_nfTzPs_vVcSJIz6eS1o' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTU2NTAyMjE1NCwiZXhwIjoxNTY1MDIyMTU1fQ.X7fASB0nEb3TtCWQLdEeKOBapbj2AkTsms3s8OqcAyApra' \
   -H 'Postman-Token: 15c5a343-b725-4fb9-bfa4-3e74fce0dbee' \
   -H 'cache-control: no-cache'
 
